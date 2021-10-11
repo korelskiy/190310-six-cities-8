@@ -5,14 +5,9 @@ import {Offers} from './mocks/offers';
 import {Reviews} from './mocks/reviews';
 
 
-const Setting = {
-  OFFERS_COUNT: 555,
-};
-
 ReactDOM.render(
   <React.StrictMode>
     <App
-      offersCount = {Setting.OFFERS_COUNT}
       offers = {Offers}
       reviews = {Reviews}
     />

@@ -1,5 +1,5 @@
 
-function NearPlacesCardScreen(): JSX.Element {
+function NearPlacesCard(): JSX.Element {
   return (
     <article className="near-places__card place-card">
       <div className="near-places__image-wrapper place-card__image-wrapper">
@@ -35,4 +35,4 @@ function NearPlacesCardScreen(): JSX.Element {
   );
 }
 
-export default NearPlacesCardScreen;
+export default NearPlacesCard;

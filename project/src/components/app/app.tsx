@@ -11,19 +11,18 @@ import {Offer} from '../../types/offer';
 import {Review} from '../../types/review';
 
 type AppScreenProps = {
-  offersCount: number;
   offers: Offer[];
   reviews: Review[];
 
 }
 
-function App({offersCount, offers, reviews}: AppScreenProps): JSX.Element {
+function App({offers, reviews}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.Main}>
           <MainScreen
-            offersCount={offersCount}
+            offers={offers}
           />
         </Route>
         <Route exact path={AppRoute.SignIn}>

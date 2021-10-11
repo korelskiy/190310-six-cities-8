@@ -1,4 +1,4 @@
-import FavoritesCardScreen from '../favorites-card-screen/favorites-card-screen';
+import FavoritesCard from '../favorites-card/favorites-card';
 import Header from '../header/header';
 
 function FavoritesScreen(): JSX.Element {
@@ -19,8 +19,8 @@ function FavoritesScreen(): JSX.Element {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  <FavoritesCardScreen />
-                  <FavoritesCardScreen />
+                  <FavoritesCard />
+                  <FavoritesCard />
                 </div>
               </li>
 
@@ -33,7 +33,7 @@ function FavoritesScreen(): JSX.Element {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  <FavoritesCardScreen />
+                  <FavoritesCard />
                 </div>
               </li>
             </ul>
