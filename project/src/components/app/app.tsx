@@ -7,12 +7,17 @@ import FavoritesScreen from '../favorites-screen/favorites-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 
+import {Offer} from '../../types/offer';
+import {Review} from '../../types/review';
+
 type AppScreenProps = {
   offersCount: number;
+  offers: Offer[];
+  reviews: Review[];
+
 }
 
-
-function App({offersCount}: AppScreenProps): JSX.Element {
+function App({offersCount, offers, reviews}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
