@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {Offer} from '../../types/offer';
-import {MAX_RATING} from '../../const';
+import {getRatingWidth} from '../../utils/utils';
 import {AppRoute} from '../../const';
 
 type FavoritesCardProps = {
@@ -16,8 +16,6 @@ function FavoritesCard({key, offer}: FavoritesCardProps): JSX.Element {
     type,
     rating,
   } = offer;
-
-  const ratingWidth = Math.round(rating) * 100 / MAX_RATING;
 
   return (
     <article key={key} className="favorites__card place-card">
@@ -41,7 +39,7 @@ function FavoritesCard({key, offer}: FavoritesCardProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${ratingWidth}%`}}></span>
+            <span style={{width: `${getRatingWidth(rating)}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

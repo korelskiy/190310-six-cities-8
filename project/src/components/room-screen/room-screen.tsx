@@ -2,17 +2,18 @@ import NearPlacesCard from '../near-places-card/near-places-card';
 import ReviewsList from '../reviews-list/reviews-list';
 import Header from '../header/header';
 import {Offer} from '../../types/offer';
-import {Review} from '../../types/review';
-import {MAX_RATING, MAX_GALLERY_IMAGES, MAX_NEAR_CARD} from '../../const';
+import {Review, UserNewReview} from '../../types/review';
+import {MAX_GALLERY_IMAGES, MAX_NEAR_CARD} from '../../const';
 import {useState} from 'react';
-
+import {getRatingWidth} from '../../utils/utils';
 
 type RoomScreenProps = {
   offers: Offer[];
   reviews: Review[];
+  setNewReviews: (formData: UserNewReview) => void;
 }
 
-function RoomScreen({offers, reviews}: RoomScreenProps): JSX.Element {
+function RoomScreen({offers, reviews, setNewReviews}: RoomScreenProps): JSX.Element {
   //Временное решение для "оживления" страницы: передаю только первый объект предложений
   const [firstOffer] = offers;
   const {
@@ -41,7 +42,6 @@ function RoomScreen({offers, reviews}: RoomScreenProps): JSX.Element {
   const favoriteMark = favorite ? 'property__bookmark-button-button--active button' : 'property__bookmark-button button';
   const isHostProClass = host.isPro ? 'property__avatar-wrapper--pro' : '';
   const isHostProText = host.isPro ? <span className="property__user-status">Pro</span> : '';
-  const ratingWidth = Math.round(rating) * 100 / MAX_RATING;
 
   return (
     <div className="page">
@@ -77,7 +77,7 @@ function RoomScreen({offers, reviews}: RoomScreenProps): JSX.Element {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `${ratingWidth}%`}}></span>
+                  <span style={{width: `${getRatingWidth(rating)}%`}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{rating}</span>
@@ -123,7 +123,10 @@ function RoomScreen({offers, reviews}: RoomScreenProps): JSX.Element {
                   </p>
                 </div>
               </div>
-              <ReviewsList firstReviews={firstReviews} />
+              <ReviewsList
+                firstReviews={firstReviews}
+                setNewReviews={setNewReviews}
+              />
             </div>
           </div>
           <section className="property__map map"></section>

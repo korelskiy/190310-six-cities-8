@@ -36,7 +36,14 @@ function App({offers, reviews}: AppScreenProps): JSX.Element {
         >
         </PrivateRoute>
         <Route exact path={AppRoute.Room}>
-          <RoomScreen offers={offers} reviews={reviews}/>
+          <RoomScreen
+            offers={offers}
+            reviews={reviews}
+            setNewReviews={(formData) => {
+              // eslint-disable-next-line no-alert
+              alert(`Function 'setNewReviews' isn't implemented. setRating: ${formData.rating} setComment: ${formData.comment}`);
+            }}
+          />
         </Route>
         <Route>
           <NotFoundScreen />

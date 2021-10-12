@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import {useState} from 'react';
 import {Offer} from '../../types/offer';
-import {MAX_RATING} from '../../const';
+import {getRatingWidth} from '../../utils/utils';
 
 type CitiesCardScreenProps = {
   key: number;
@@ -25,7 +25,6 @@ function CitiesCard({key, offer, handleHoverCard}: CitiesCardScreenProps): JSX.E
 
   const premiumMark = isPremium ? <div className="place-card__mark"><span>Premium</span></div> : null;
   const favoriteMark = favorite ? 'place-card__bookmark-button--active button' : 'place-card__bookmark-button button';
-  const ratingWidth = Math.round(rating) * 100 / MAX_RATING;
 
   return (
     <article key={key} className="cities__place-card place-card"
@@ -59,7 +58,7 @@ function CitiesCard({key, offer, handleHoverCard}: CitiesCardScreenProps): JSX.E
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${ratingWidth}%`}}></span>
+            <span style={{width: `${getRatingWidth(rating)}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
