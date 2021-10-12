@@ -8,17 +8,15 @@ type CitiesListCardsProps = {
 
 function CitiesListCards({offers}: CitiesListCardsProps): JSX.Element {
 
-  const [focusedCard, setFocusedCard] = useState({});
-  const handleHoverCard = (obj: Offer): void => {
-    setFocusedCard(obj);
-  };
+  const [, setFocusedCard] = useState({});
+
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
         <CitiesCard
           key={offer.id}
           offer={offer}
-          handleHoverCard = {() => handleHoverCard(offer)}
+          handleHoverCard={() => setFocusedCard(offer)}
         />))}
     </div>
   );

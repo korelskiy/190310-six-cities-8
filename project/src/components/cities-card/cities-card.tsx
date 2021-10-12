@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
 import {useState} from 'react';
 import {Offer} from '../../types/offer';
 import {MAX_RATING} from '../../const';
@@ -5,7 +7,7 @@ import {MAX_RATING} from '../../const';
 type CitiesCardScreenProps = {
   key: number;
   offer: Offer;
-  handleHoverCard: Offer;
+  handleHoverCard: (offer: Offer) => void;
 }
 
 function CitiesCard({key, offer, handleHoverCard}: CitiesCardScreenProps): JSX.Element {
@@ -26,12 +28,14 @@ function CitiesCard({key, offer, handleHoverCard}: CitiesCardScreenProps): JSX.E
   const ratingWidth = Math.round(rating) * 100 / MAX_RATING;
 
   return (
-    <article key={key} className="cities__place-card place-card">
+    <article key={key} className="cities__place-card place-card"
+      onMouseEnter={() => handleHoverCard(offer)}
+    >
       {premiumMark}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="/">
+        <Link to={AppRoute.Room}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -60,7 +64,9 @@ function CitiesCard({key, offer, handleHoverCard}: CitiesCardScreenProps): JSX.E
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="/">{title}</a>
+          <Link to={AppRoute.Room}>
+            {title}
+          </Link>
         </h2>
         <p className="place-card__type">
           {type}
