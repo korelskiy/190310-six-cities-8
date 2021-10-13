@@ -4,7 +4,7 @@ import Header from '../header/header';
 import {Offer} from '../../types/offer';
 import {Review, UserNewReview} from '../../types/review';
 import {MAX_GALLERY_IMAGES, MAX_NEAR_CARD} from '../../const';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {getRatingWidth} from '../../utils/utils';
 
 type RoomScreenProps = {
@@ -36,7 +36,11 @@ function RoomScreen({offers, reviews, setNewReviews}: RoomScreenProps): JSX.Elem
   const [firstReviews] = reviews;
 
 
-  const [favorite, setFavorite] = useState(isFavorite);
+  const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    setFavorite(isFavorite);
+  }, [isFavorite]);
 
   const premiumMark = isPremium ? <div className="property__mark"><span>Premium</span></div> : null;
   const favoriteMark = favorite ? 'property__bookmark-button-button--active button' : 'property__bookmark-button button';
