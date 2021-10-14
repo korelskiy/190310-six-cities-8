@@ -1,11 +1,13 @@
-import CitiesCardScreen from '../cities-card-screen/cities-card-screen';
+import CitiesListCards from '../cities-list-cards/cities-list-cards';
 import Header from '../header/header';
+import {Offer} from '../../types/offer';
 
 type MainScreenProps = {
-  offersCount: number;
+  offers: Offer[];
 }
 
-function MainScreen({offersCount}: MainScreenProps): JSX.Element {
+function MainScreen({offers}: MainScreenProps): JSX.Element {
+  const offersCount = offers.length;
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -67,13 +69,9 @@ function MainScreen({offersCount}: MainScreenProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                <CitiesCardScreen />
-                <CitiesCardScreen />
-                <CitiesCardScreen />
-                <CitiesCardScreen />
-                <CitiesCardScreen />
-              </div>
+              <CitiesListCards
+                offers={offers}
+              />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
